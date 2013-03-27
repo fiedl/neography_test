@@ -29,6 +29,23 @@ bundle exec ruby neography_test.rb
 
 ## Data Visualization
 
+### Neovigator (Recommmended)
+
+[Neovigator](https://github.com/fiedl/neovigator) is a great tool to display your graph. At the moment, the `bundle install` fails due to dependency issues with ruby 2.0. Just use my fork, for the moment:
+
+```bash
+git clone git@github.com:fiedl/neovigator.git
+cd neovigator
+bundle install
+rackup
+```
+
+Then visit [localhost:9292](http://localhost:9292) to view your graph.
+
+Maybe, you have to type in John's `neo_id` in the neovigator web interface. The `neo_id` is printed out in at the end of the test script within the node information. Just look for `.../node/4/...` in the node information.
+
+### Neo4j Web Administration Tool
+
 The graph data, created in [./neography_test.rb](neography_test.rb) can be visualized using the [neo4j web administration tool](http://127.0.0.1:7474/webadmin), which can be found, locally, at http://127.0.0.1:7474/webadmin.
 
 To visualize the whole graph, click *Data browser* and query
@@ -39,10 +56,13 @@ RETURN n as from, r as `->`, m as to;
 ```
 and switch *view mode* (top right button below *documentation*).
 
-### The Screen Stays Grey
+*Please note*, this does not work for me. The screen stays grey. That's why I'm recommending Neovigator. If you have a clue, please help. Thanks!
 
-I can't get the graph display of the web administration tool running in each browser. An alternative to display the graph, is to [download Gephi](http://gephi.org/users/download/) and install the *neo4j plugin* from *Extras > Plugins* menu.
+### Gephi
 
+An alternative to display the graph, is to [download Gephi](http://gephi.org/users/download/) and install the *neo4j plugin* from *Extras > Plugins* menu.
+
+Then *import* the graph, which should be located at `neography_test/neo4j/data/graph.db`.
 
 
 ## Data Manipulation
@@ -65,4 +85,5 @@ jane.relates to: tarzan, as: :friend
 ## Resources
 * http://maxdemarzi.com/2012/01/04/getting-started-with-ruby-and-neo4j/
 * https://github.com/maxdemarzi/neography
+* https://github.com/maxdemarzi/neovigator
 * http://www.neo4j.org/learn/cypher

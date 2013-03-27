@@ -1,9 +1,6 @@
 require 'rubygems'
 require 'neography'
 
-
-
-
 class NeoObject
   def initialize(attributes = {})
     # neo4j database adapter, available to all NeoObjects
@@ -30,7 +27,9 @@ class NeoObject
   end
 
   def self.create(attributes)
-    self.new(attributes).save
+    new_object = self.new(attributes)
+    new_object.save
+    return new_object
   end
 
   def wipe_database
@@ -47,6 +46,7 @@ class NeoObject
       @@neo.create_relationship relationship_type, @node, related_object.node
     end
   end
+
 end
 
 class Person < NeoObject
@@ -71,3 +71,6 @@ christine = Person.create(name: "Christine Doe")
 john.relates to: jane, as: :husband 
 christine.relates to: john, as: :child 
 christine.relates to: jane, as: :child
+
+# print john's node in order to find out the neo_id
+p "John's Node: ", john.node

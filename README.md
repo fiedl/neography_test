@@ -25,12 +25,33 @@ bundle exec ruby neography_test.rb
 
 ## Data Visualization
 
-The graph data, created in [./neography_test.rb](neography_test.rb) can be visualized using ...
+The graph data, created in [./neography_test.rb](neography_test.rb) can be visualized using the [neo4j web administration tool](http://127.0.0.1:7474/webadmin), which can be found, locally, at http://127.0.0.1:7474/webadmin.
+
+To visualize the whole graph, click *Data browser* and query
+```cypher
+START n=node(*)    
+MATCH n-[r]->m 
+RETURN n as from, r as `->`, m as to;
+```
+and switch *view mode* (top right button below *documentation*).
+
+TODO: This shows a grey screen. What now?
 
 ## Data Manipulation
 
 You can play around with the data, either in the regular ruby console, or using `pry`:
 
+```bash
+# bash
+bundle exec pry --require ./neography_test.rb
+```
+
+```ruby
+# then, in pry
+tarzan = Person.create(name: "Tarzan")
+jane = Person.create(name: "Jane", hair: "Blonde")
+jane.relates to: tarzan, as: :friend
+```
 
 
 ## Resources

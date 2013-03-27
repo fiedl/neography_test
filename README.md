@@ -5,6 +5,10 @@ This simple **[ruby](http://www.ruby-lang.org/)** app demonstrates how to use th
 
 ## Setup
 
+**Ruby Version**: Since this test script uses the [Hash](http://ruby-doc.org/core-2.0/Hash.html) class, this script requires ruby 2.0.0 or higher. (Recommendation: [rbenv](https://github.com/sstephenson/rbenv/) greatly simplifies the installation of different ruby versions.)
+
+Download and install this test script like this:
+
 ```bash
 # bash
 git clone https://github.com/fiedl/neography_test
@@ -14,7 +18,7 @@ bundle exec rake neo4j:install
 bundle exec rake neo4j:start
 ```
 
-This will neo4j and start a database server in the background.
+This will install neo4j and start a database server in the background.
 
 ## Starting the Script
 
@@ -35,7 +39,11 @@ RETURN n as from, r as `->`, m as to;
 ```
 and switch *view mode* (top right button below *documentation*).
 
-TODO: This shows a grey screen. What now?
+### The Screen Stays Grey
+
+I can't get the graph display of the web administration tool running in each browser. An alternative to display the graph, is to [download Gephi](http://gephi.org/users/download/) and install the *neo4j plugin* from *Extras > Plugins* menu.
+
+
 
 ## Data Manipulation
 
@@ -57,4 +65,4 @@ jane.relates to: tarzan, as: :friend
 ## Resources
 * http://maxdemarzi.com/2012/01/04/getting-started-with-ruby-and-neo4j/
 * https://github.com/maxdemarzi/neography
-
+* http://www.neo4j.org/learn/cypher

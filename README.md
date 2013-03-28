@@ -19,6 +19,15 @@ bundle exec rake neo4j:start
 
 This will install neo4j and start a database server in the background.
 
+## Script Versions
+
+This script is provided in several versions, each using a different level of abstraction regarding the interaction with the neo4j database. 
+
+1. Check out the [neography-phase-1 tag](), where the script interacts with the neo4j database using the methods described at https://github.com/maxdemarzi/neography#usage.
+
+2. Check out the [neography-phase-2 tag](), where the script interacts with the neo4j database using the methods described at https://github.com/maxdemarzi/neography#phase-2, which are more abstract than using phase 1.
+
+
 ## Starting the Script
 
 ```
@@ -84,7 +93,9 @@ jane.relates to: tarzan, as: :friend
 
 
 ## Resources
-* http://maxdemarzi.com/2012/01/04/getting-started-with-ruby-and-neo4j/
-* https://github.com/maxdemarzi/neography
-* https://github.com/maxdemarzi/neovigator
-* http://www.neo4j.org/learn/cypher
+* Comments on setting up Neo4J: http://maxdemarzi.com/2012/01/04/getting-started-with-ruby-and-neo4j/
+* Neography gem: https://github.com/maxdemarzi/neography
+* Neography wiki: https://github.com/maxdemarzi/neography/wiki
+* Neography documentation: http://rubydoc.info/github/maxdemarzi/neography/frames
+* Neovigator gem to visualize the graph: https://github.com/maxdemarzi/neovigator
+* Some basic query commands for using neo4j through the cypher language: http://www.neo4j.org/learn/cypher

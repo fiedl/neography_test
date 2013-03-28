@@ -1,61 +1,29 @@
 require 'rubygems'
 require 'neography'
 
-class NeoObject
-  def initialize(attributes = {})
-    # neo4j database adapter, available to all NeoObjects
-    @@neo ||= Neography::Rest.new 
-    @attributes = Hash(attributes).merge({ type: self.class.name })
-    self
+class NeoObject < Neography::Node
+
+  def self.create(args, db = Neography::Rest.new)
+    subclass_name = self.name  # e.g. Person
+    args.merge!({type: subclass_name})
+    super(args, db)
   end
 
-  def node
-    @node
-  end
-
-  def update_attibutes(attributes)
-    @neo.set_node_properties(@node, attributes) if @node
-  end
-
-  def save
-    if @node
-      self.update_attributes(@attributes)
-    else
-      @node = @@neo.create_node(@attributes)
-    end
-    self
-  end
-
-  def self.create(attributes)
-    new_object = self.new(attributes)
-    new_object.save
-    return new_object
-  end
-
-  def wipe_database
-    @@neo.execute_script("g.clear()") 
-  end
   def self.wipe_database
-    self.new.wipe_database
+    Neography::Rest.new.execute_script("g.clear()") 
   end
 
   def relates(args)
     if args[:to].kind_of?(NeoObject) && args[:as].kind_of?(Symbol)
       related_object = args[:to]
       relationship_type = "is_#{args[:as]}_of"
-      @@neo.create_relationship relationship_type, @node, related_object.node
+      Neography::Relationship.create relationship_type, self, related_object
     end
   end
 
 end
 
 class Person < NeoObject
-  def name
-    @attributes[:name]
-  end
-  def name=(name)
-    @attributes[:name] = name
-  end
 end
 
 
@@ -73,4 +41,5 @@ christine.relates to: john, as: :child
 christine.relates to: jane, as: :child
 
 # print john's node in order to find out the neo_id
-p "John's Node: ", john.node
+p "John's Node: ", john
+p "John's neo_id: ", john.neo_id

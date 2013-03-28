@@ -1,4 +1,3 @@
-
 # neography_test
 
 This simple **[ruby](http://www.ruby-lang.org/)** app demonstrates how to use the **[neo4j graph database](http://www.neo4j.org/)** through the **[neography](https://github.com/maxdemarzi/neography)** gem.
@@ -30,6 +29,8 @@ bundle exec ruby neography_test.rb
 ## Data Visualization
 
 ### Neovigator (Recommmended)
+
+<img src="https://raw.github.com/fiedl/neography_test/master/screenshots/neovigator_screenshot.png" height="400" />
 
 [Neovigator](https://github.com/fiedl/neovigator) is a great tool to display your graph. At the moment, the `bundle install` fails due to dependency issues with ruby 2.0. Just use my fork, for the moment:
 

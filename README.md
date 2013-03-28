@@ -28,9 +28,9 @@ bundle exec ruby neography_test.rb
 
 ## Data Visualization
 
-### Neovigator (Recommmended)
-
 <img src="https://raw.github.com/fiedl/neography_test/master/screenshots/neovigator_screenshot.png" height="400" />
+
+### Neovigator (Recommmended)
 
 [Neovigator](https://github.com/fiedl/neovigator) is a great tool to display your graph. At the moment, the `bundle install` fails due to dependency issues with ruby 2.0. Just use my fork, for the moment:
 

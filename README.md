@@ -23,9 +23,13 @@ This will install neo4j and start a database server in the background.
 
 This script is provided in several versions, each using a different level of abstraction regarding the interaction with the neo4j database. 
 
-1. Check out the [neography-phase-1 tag](), where the script interacts with the neo4j database using the methods described at https://github.com/maxdemarzi/neography#usage.
+1.  Check out the [neography-phase-1 tag](https://github.com/fiedl/neography_test/tree/neography-phase-1), where the script interacts with the neo4j database using the methods described at https://github.com/maxdemarzi/neography#usage.
 
-2. Check out the [neography-phase-2 tag](), where the script interacts with the neo4j database using the methods described at https://github.com/maxdemarzi/neography#phase-2, which are more abstract than using phase 1.
+2.  Check out the [neography-phase-2 tag](https://github.com/fiedl/neography_test/tree/neography-phase-1), where the script interacts with the neo4j database using the methods described at https://github.com/maxdemarzi/neography#phase-2, which are more abstract than using phase 1.
+
+    There are two caveats about this approach: (a) For each object, a separate Rest interface object is created. (b) The `Person` class inherits from `Neography::Node`, which means that it can't possibly inherit from `ActiveRecord::Base`.
+
+    One could get around (a) by initiating an interface `@neo`, manually, as shown in step 1, and keeping it as a class variable. (b) could be solved by storing the `Neography::Node` instance as instance variable of the `NeoObject` and then delegating the methods, also as used in step 1. But, hopefully, both steps will become unnecessary when moving to abstraction level 3, i.e. using an `ActiveRecord` adapter for neo4j.
 
 
 ## Starting the Script
